@@ -1,43 +1,43 @@
 {
   "project_info": {
-    "project_number": "432422938868",
-    "firebase_url": "https://firefly-24861.firebaseio.com",
-    "project_id": "firefly-24861",
-    "storage_bucket": "firefly-24861.appspot.com"
+    "project_number": "565469005270",
+    "firebase_url": "https://firefly-8a6fc.firebaseio.com",
+    "project_id": "firefly-8a6fc",
+    "storage_bucket": "firefly-8a6fc.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:432422938868:android:a43fe70c660cfc5a",
+        "mobilesdk_app_id": "1:565469005270:android:a43fe70c660cfc5a",
         "android_client_info": {
           "package_name": "com.firefly.firefly_app"
         }
       },
       "oauth_client": [
         {
-          "client_id": "432422938868-87b6980vg9isfon0fmdrbmscq1t3565k.apps.googleusercontent.com",
+          "client_id": "565469005270-lrv3buh6tl33enk9r0q4h8ej7ghr5qrj.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.firefly.firefly_app",
+            "certificate_hash": "1cb68db8d232337453233e5217c15594ffcf3ffd"
+          }
+        },
+        {
+          "client_id": "565469005270-5b1eddsel3rds9il8epck25r3aa5i9qe.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyCANWT7meUPPJoEWip9c8Hdw3oqn9FZrd4"
+          "current_key": "AIzaSyACi-a-08kcArJscAQ78AIjQ7DQI8lnCZY"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "432422938868-87b6980vg9isfon0fmdrbmscq1t3565k.apps.googleusercontent.com",
+              "client_id": "565469005270-5b1eddsel3rds9il8epck25r3aa5i9qe.apps.googleusercontent.com",
               "client_type": 3
-            },
-            {
-              "client_id": "432422938868-8p8f8la5m5gs032h0qu19ekm0334rmdi.apps.googleusercontent.com",
-              "client_type": 2,
-              "ios_info": {
-                "bundle_id": "com.firefly",
-                "app_store_id": "0987654321"
-              }
             }
           ]
         }

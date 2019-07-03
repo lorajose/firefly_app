@@ -1,8 +1,20 @@
+import 'dart:async';
+
+import 'package:firefly_app/dashboard/pages/main_page.dart';
+import 'package:firefly_app/style/theme.dart' as Theme;
+import 'package:firefly_app/utils/bubble_indication_painter.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:firefly_app/style/theme.dart' as Theme;
-import 'package:firefly_app/utils/bubble_indication_painter.dart';
+import 'package:google_sign_in/google_sign_in.dart';
+
+//Trabajando Autenticacion Google.
+GoogleSignIn _googleSignIn = GoogleSignIn(
+  scopes: <String>[
+    'email',
+    'https://www.googleapis.com/auth/contacts.readonly',
+  ],
+);
 
 class LoginPage extends StatefulWidget {
   LoginPage({Key key}) : super(key: key);
@@ -13,7 +25,6 @@ class LoginPage extends StatefulWidget {
 
 class _LoginPageState extends State<LoginPage>
     with SingleTickerProviderStateMixin {
-
   final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
 
   final FocusNode myFocusNodeEmailLogin = FocusNode();
@@ -137,6 +148,17 @@ class _LoginPageState extends State<LoginPage>
     ]);
 
     _pageController = PageController();
+  }
+
+  //TODO trabajando con autenticacion de google 1.0 TRR JL   $$$$$$$$$$$$
+  Future<void> _handleSignIn() async {
+    try {
+      await _googleSignIn.signIn();
+      Navigator.push(context,
+          MaterialPageRoute(builder: (context) => MainPage() ));
+    } catch (error) {
+      print(error);
+    }
   }
 
   void showInSnackBar(String value) {
@@ -330,8 +352,7 @@ class _LoginPageState extends State<LoginPage>
                             fontFamily: "WorkSansBold"),
                       ),
                     ),
-                    onPressed: () =>
-                        showInSnackBar("Login button pressed")),
+                    onPressed: () => showInSnackBar("Login button pressed")),
               ),
             ],
           ),
@@ -419,7 +440,14 @@ class _LoginPageState extends State<LoginPage>
               Padding(
                 padding: EdgeInsets.only(top: 10.0),
                 child: GestureDetector(
-                  onTap: () => showInSnackBar("Google button pressed"),
+
+                  onTap: ()=> _handleSignIn(),
+                  /* onTap: () {
+                    // MainPage();// _handleSignIn();  //TODO TRABAJANDO AQUI
+                    Navigator.pop(context);
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) => MainPage() ));
+                  }, */
                   child: Container(
                     padding: const EdgeInsets.all(15.0),
                     decoration: new BoxDecoration(
@@ -467,7 +495,7 @@ class _LoginPageState extends State<LoginPage>
                           focusNode: myFocusNodeName,
                           controller: signupNameController,
                           keyboardType: TextInputType.text,
-                          textCapitalization: TextCapitalization.words,
+                          // textCapitalization: TextCapitalization.words, //TODO verificar
                           style: TextStyle(
                               fontFamily: "WorkSansSemiBold",
                               fontSize: 16.0,
@@ -628,8 +656,7 @@ class _LoginPageState extends State<LoginPage>
                             fontFamily: "WorkSansBold"),
                       ),
                     ),
-                    onPressed: () =>
-                        showInSnackBar("SignUp button pressed")),
+                    onPressed: () => showInSnackBar("SignUp button pressed")),
               ),
             ],
           ),
