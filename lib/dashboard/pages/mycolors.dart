@@ -1,41 +1,40 @@
-import 'package:flutter/material.dart';
 import 'dart:math';
+import 'package:flutter/material.dart';
 
-void main() => runApp(new Mycolors());
+void main() {
+  runApp(MaterialApp(home: Mycolors()));
+}
 
-class Mycolors extends StatelessWidget {
+class Mycolors extends StatefulWidget {
+  @override
+  _MyPageState createState() => new _MyPageState();
+}
+
+class _MyPageState extends State<Mycolors> {
+  final Random _random = Random();
+
+  Color _color = Color(0xFFFFFFFF);
+
+  void changeColor() {
+    setState(() {
+      _color = Color.fromARGB(
+        //or with fromRGBO with fourth arg as _random.nextDouble(),
+        _random.nextInt(256),
+        _random.nextInt(256),
+        _random.nextInt(256),
+        _random.nextInt(256),
+      );
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
-    // TODO: implement build
-    return new MaterialApp(
-        title: "Raised Button",
-        theme: new ThemeData(
-          primarySwatch: Colors.teal,
+    return Scaffold(
+      body: InkWell(
+        onTap: changeColor,
+        child: Container(
+          color: _color,
         ),
-        home: new HomePage());
-  }
-}
-
-class HomePage extends StatefulWidget {
-  @override
-  HomePageState createState() => new HomePageState();
-}
-
-class HomePageState extends State<HomePage> {
-  //contains the colours for the circle Avatars
-  final List<Color> circleColors = [Colors.red, Colors.blue, Colors.green];
-
-  Color randomGenerator() {
-    return circleColors[new Random().nextInt(2)];
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return Center(
-      child: RaisedButton(
-        onPressed: () => {},
-        child: Text('Click'),
-        color: randomGenerator(),
       ),
     );
   }
